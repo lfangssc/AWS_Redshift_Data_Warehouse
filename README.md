@@ -30,28 +30,30 @@ It's the configuration file of the AWS Redshift cluster. It has all the paramete
 
 
 Sample of song_data in S3, SONG_DATA='s3://udacity-dend/song_data'
-{"artist_id":"ARJNIUY12298900C91","artist_latitude":null,"artist_location":"","artist_longitude":null,"artist_name":"Adelitas Way","duration":213.9424,"num_songs":1,"song_id":"SOBLFFE12AF72AA5BA","title":"Scream","year":2009}
+
+        {"artist_id":"ARJNIUY12298900C91","artist_latitude":null,"artist_location":"","artist_longitude":null,"artist_name":"Adelitas Way","duration":213.9424,"num_songs":1,"song_id":"SOBLFFE12AF72AA5BA","title":"Scream","year":2009}
 
 
 Sample of log_data in S3, LOG_DATA='s3://udacity-dend/log_data'
-{"artist":null,
-"auth":"Logged In",
-"firstName":"Walter",
-"gender":"M",
-"itemInSession":0,
-"lastName":"Frye",
-"length":null,
-"level":"free",
-"location":"San Francisco-Oakland-Hayward, CA",
-"method":"GET",
-"page":"Home",
-"registration":1540919166796.0,
-"sessionId":38,
-"song":null,
-"status":200,
-"ts":1541105830796,
-"userAgent":"\"Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/36.0.1985.143 Safari\/537.36\"",
-"userId":"39"}
+
+        {"artist":null,
+        "auth":"Logged In",
+        "firstName":"Walter",
+        "gender":"M",
+        "itemInSession":0,
+        "lastName":"Frye",
+        "length":null,
+        "level":"free",
+        "location":"San Francisco-Oakland-Hayward, CA",
+        "method":"GET",
+        "page":"Home",
+        "registration":1540919166796.0,
+        "sessionId":38,
+        "song":null,
+        "status":200,
+        "ts":1541105830796,
+        "userAgent":"\"Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/36.0.1985.143 Safari\/537.36\"",
+        "userId":"39"}
 
 Fact Table
 1. songplays - records in event data associated with song plays i.e. records with page NextSong
