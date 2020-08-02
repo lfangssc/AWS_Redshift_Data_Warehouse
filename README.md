@@ -82,6 +82,7 @@ Dimension Tables
  ## Deployment
 1. Put Create_tables.py, etl.py, sql_queries.py, dwh.cfg in a folder of a local PC.
 2. Enter the configure parameters in the dwh.cfg. Enter the roleARN behinds 'DWH_ROLE_ARN=' and the cluster endpoint behinds 'HOST='. 
-3. local command line
+3. local command line and in the same folder of the py files.
+
         python3 Create_tables.py
         python3 etl.py.py
