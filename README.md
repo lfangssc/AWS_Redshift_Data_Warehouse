@@ -7,26 +7,24 @@ A music streaming startup, Sparkify, has grown their user base and song database
 The goal of the project is to use the provided data in S3 and ETL pipeline to build a Redshift data warehouse that can be efficiently queried for business purposes.
 
 ## The workflow of the project: 
-1. Setup a Redshift dataware house in AWS using the infrastruce-as-code (IaC) method. 
+1. Setup a Redshift dataware house in AWS. 
 2. Create the tables for the stagint log_data, staging song_data. Also Create star-schema tables in Redshift. The fact table is "songplays". The dimension tables are "users", "songs", "artists" and "time".
 3. Copy the corresponding data in S3 and write in the staging tables.
 4. Build ETL to extract data from staging tables and write in the fact and dimension tables.
 
 ## The scripts in the project
-#### 1. Redshift_cluster_IaC
-This is the main line of the project. Other scripts 'create_tables.py', 'sql_queries.py' and 'etl.py' was imported to it to reach the project target. 
-It first creates an IAM role and a cluster in AWS Redshift. Then it runs the create_tables.py to create tables for stagint log_data, staging song_data as well as the star-schema including the fact table "songplays" and the dimension tables "users", "songs", "artists" and "time". After that, it runs the etl.py to fill up the staging tables and extract data from them and write in the fact and dimension tables. At last, it deletes the IAM role and the cluster.
-#### 2. Create_tables.py
+
+#### 1. Create_tables.py
 It is used to create the staging tables and the star-schema including the fact table "songplays" and the dimension tables "users", "songs", "artists" and "time".
 It first read the parameters from the dwh.cfg and connect to the Redshift cluster, then read the queries from sql_queries.py to commit them and create tables.
 
-#### 3.etl.py
-Similar with the creat_tables.py, it first read the parameters from the dwh.cfg and connect to the Redshift cluster. Then, it loads the staging tables and the star schema. The SQL command are imported from the sql_queries.py. 
+#### 2.etl.py
+Insert and transform data from S3 into the staging tables and the star schema. The SQL command are imported from the sql_queries.py. 
 
-#### 4. sql_queries.py
+#### 3. sql_queries.py
 It contains all the SQL queries for creating tables, copy staging tables and insert into the star-schema including the fact table "songplays" and the dimension tables "users", "songs", "artists" and "time".
 
-#### 5. dwh.cfg
+#### 4. dwh.cfg
 It's the configuration file of the AWS Redshift cluster. It has all the parameters for setting up the IAM role and the cluster, as well as the end_point and rolearn to connect to the cluster.
 
 
@@ -70,9 +68,21 @@ Fact Table
 Dimension Tables
 2. users - users in the app
     (user_id, first_name, last_name, gender, level)
+    
 3. songs - songs in music database
     (song_id, title, artist_id, year, durationy)
+    
 4. artists - artists in music database
     (artist_id, name, location, lattitude, longitude)
+    
 5. time - timestamps of records in songplays broken down into specific units
     (start_time, hour, day, week, month, year, weekday)
+    
+    
+ ## Deployment
+1. Put Create_tables.py, etl.py, sql_queries.py, dwh.cfg in a folder of a local PC.
+2. Enter the configure parameters in the dwh.cfg. Enter the roleARN behinds 'DWH_ROLE_ARN=' and the cluster endpoint behinds 'HOST='. 
+3. local command line and in the same folder of the py files.
+
+        python3 Create_tables.py
+        python3 etl.py.py
